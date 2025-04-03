@@ -5,7 +5,10 @@
 package Lib;
 
 import Controlador.NinjaControlador;
+import Controlador.MisionNinjaControlador;
+import Modelo.MisionNinjaDAO;
 import Modelo.NinjaDAO;
+import Vista.MisionNinjaVista;
 import Vista.NinjaVista;
 
 /**
@@ -18,7 +21,12 @@ public class main {
         
         NinjaDAO ninjaDAO = new NinjaDAO();
     NinjaVista ninjaVista = new NinjaVista();
-    NinjaControlador ninjaControlador = new NinjaControlador(ninjaDAO, ninjaVista);
+    MisionNinjaDAO misionNinjaDAO = new MisionNinjaDAO();
+    MisionNinjaVista misionNinjaVista = new MisionNinjaVista();
+    MisionNinjaControlador misionNinjaControlador = new MisionNinjaControlador(misionNinjaDAO, misionNinjaVista);
+    
+    
+   NinjaControlador ninjaControlador = new NinjaControlador(ninjaDAO, ninjaVista, misionNinjaControlador);
     
     ninjaControlador.iniciar();
         

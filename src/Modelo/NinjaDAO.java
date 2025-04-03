@@ -48,6 +48,9 @@ public class NinjaDAO {
     
     
     
+    
+    
+    
     //Leer ninjas
     //
     public List<String> obtenerNinjas() {
@@ -76,9 +79,13 @@ public class NinjaDAO {
     }
     
     
+    
+    
+    
+   /* 
     //listar misiones
      public List<String> obtenerMisiones() {
-        String sql = "select m.descipcion as mision, n.nombre as ninja from mision m join misionNinja mn on m.id =  mn.mision_id join ninja n on n.id = mn.ninja_id";
+        String sql = "select m.descipcion as mision, n.nombre as ninja from mision m join misionNinja mn on m.id =  mn.mision_id join ninja n on n.id = mn.ninja_id where mn.ninja_id = ?";
         List<String> listaNinjas = new ArrayList<>();
         try (
                 Connection conexionInterna = conectar(); 
@@ -124,7 +131,7 @@ public class NinjaDAO {
         catch(SQLException e){
             e.printStackTrace();
         }
-    }
+    }*/
     
     
 }

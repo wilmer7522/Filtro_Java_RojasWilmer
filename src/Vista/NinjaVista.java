@@ -25,7 +25,7 @@ public class NinjaVista {
         System.out.println("Rango");
         int rango = sc.nextInt();
         sc.nextLine();
-        System.out.println("ALdea");
+        System.out.println("Aldea");
         
         String aldea = sc.nextLine();
         

@@ -18,11 +18,13 @@ public class NinjaControlador {
 
     private NinjaDAO ninjaDAO;
     private NinjaVista ninjaVista;
+    private MisionNinjaControlador misionNinjaControlador;
     private Scanner leer;
 
-    public NinjaControlador(NinjaDAO ninjaDAO, NinjaVista ninjaVista) {
+    public NinjaControlador(NinjaDAO ninjaDAO, NinjaVista ninjaVista, MisionNinjaControlador misionNinjaControlador) {
         this.ninjaDAO = ninjaDAO;
         this.ninjaVista = ninjaVista;
+        this.misionNinjaControlador = misionNinjaControlador;
         this.leer = new Scanner(System.in);
     }
 
@@ -34,9 +36,10 @@ public class NinjaControlador {
             System.out.println("1. Crear Ninja");
             System.out.println("2. listar Ninjas");
             System.out.println("3. Misiones Ninja");
-            System.out.println("4. Eliminar Ninja");
-            System.out.println("5. Buscar Ninja por ID");
-            System.out.println("6. Salir del Programa");
+            System.out.println("4. Ver misiones Completadas de Ninja");
+            System.out.println("5. Asignar Mision a Ninja");
+            System.out.println("6. Finalizar Mision");
+            System.out.println("7. Salir");
             System.out.println(":");
             int opcion = leer.nextInt();
             switch (opcion) {
@@ -56,12 +59,28 @@ public class NinjaControlador {
                     
                     case 3:
                         
-                        System.out.println("Lista de Misiones ");
-                    List<String> listaMisiones = ninjaDAO.obtenerMisiones();
-                    for (String ninja :  listaMisiones) {
-                        System.out.println(ninja);
-                    }
+                        misionNinjaControlador.iniciarMision();
                     break;
+                    
+                    
+                    case 4:
+                        
+                        misionNinjaControlador.misionNinjaFechaFin();
+                        break;
+                        
+                    case 5:
+                        misionNinjaControlador.crearMision();
+                        break;
+                        
+                    case 6:
+                        misionNinjaControlador.finalizarMision();
+                        break;
+                        
+                    case 7:
+                        System.out.println("Saliendo...");
+                    regresar = false;
+                    break;
+                        
                         
                    /* System.out.println("ingresar Datos de usuario a actualizar");
                     System.out.println("Ingrese ID a actualizar ");
