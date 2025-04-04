@@ -178,8 +178,7 @@ public class MisionNinjaDAO {
                         resultado.getDate("fechaFin").toLocalDate(),
                         nombreNinja,
                         descripcionMision));
-                       // resultado.getString("ninja"),
-                //resultado.getString("mision")));
+                       
             }
         }catch(SQLException e){
             e.printStackTrace();

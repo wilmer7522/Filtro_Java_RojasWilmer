@@ -82,56 +82,6 @@ public class NinjaDAO {
     
     
     
-   /* 
-    //listar misiones
-     public List<String> obtenerMisiones() {
-        String sql = "select m.descipcion as mision, n.nombre as ninja from mision m join misionNinja mn on m.id =  mn.mision_id join ninja n on n.id = mn.ninja_id where mn.ninja_id = ?";
-        List<String> listaNinjas = new ArrayList<>();
-        try (
-                Connection conexionInterna = conectar(); 
-                PreparedStatement solicitud = conexionInterna.prepareStatement(sql);
-                ResultSet resultado = solicitud.executeQuery();) {
-            while (resultado.next()) {
-                
-                
-                listaNinjas.add(resultado.getString("mision") + " - " +
-                        resultado.getString("ninja"));
-                
-                
-                
-               
-                
-            }
-        }catch(SQLException e){
-            e.printStackTrace();
-    }
-        return listaNinjas;
-    
-    }
-    
-    
-    //Actualizar (update)
-    public void actualizarNinja(int id, String nombre, int rango_id, String aldea){
-        String sql = "update ninja set nombre= ?, rango_id=?, aldea=? where id=?";
-        
-        try(Connection conexionInterna = conectar();
-                PreparedStatement solicitud = conexionInterna.prepareStatement(sql)){
-            solicitud.setString(1, nombre);
-            solicitud.setInt(2, rango_id);
-            solicitud.setString(3, aldea);
-            solicitud.setInt(4, id);
-            
-            int filas = solicitud.executeUpdate();
-            if (filas > 0){
-                System.out.println("Ninja actualizado exitosamente");
-            }else{
-                System.out.println("No se pudo actualizar el Ninja con el id " + id);
-            }
-        }
-        catch(SQLException e){
-            e.printStackTrace();
-        }
-    }*/
-    
+  
     
 }
