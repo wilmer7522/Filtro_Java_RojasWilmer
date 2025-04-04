@@ -15,6 +15,8 @@ public class MisionNinja {
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
     private int ninja_id;
+    private String ninja;
+    private String descripcion;
     private int mision_id;
 
     public MisionNinja(int id, LocalDate fechaInicio, LocalDate fechaFin, int ninja_id, int mision_id) {
@@ -24,6 +26,31 @@ public class MisionNinja {
         this.ninja_id = ninja_id;
         this.mision_id = mision_id;
     }
+
+    public MisionNinja(LocalDate fechaInicio, LocalDate fechaFin, String ninja, String descripcion) {
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.ninja = ninja;
+        this.descripcion = descripcion;
+    }
+
+    public String getNinja() {
+        return ninja;
+    }
+
+    public void setNinja(String ninja) {
+        this.ninja = ninja;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+    
+    
 
     public MisionNinja(LocalDate fechaInicio, LocalDate fechaFin, int ninja_id, int mision_id) {
         this.fechaInicio = fechaInicio;

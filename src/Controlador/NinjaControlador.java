@@ -4,10 +4,13 @@
  */
 package Controlador;
 
+import Modelo.MisionNinja;
+import Modelo.MisionNinjaDAO;
 import Modelo.NinjaDAO;
 import Vista.NinjaVista;
 import java.util.Scanner;
 import Modelo.Ninja;
+import Vista.MisionNinjaVista;
 import java.util.List;
 
 /**
@@ -18,12 +21,16 @@ public class NinjaControlador {
 
     private NinjaDAO ninjaDAO;
     private NinjaVista ninjaVista;
+    private MisionNinjaDAO misionNinjaDAO;
+    private MisionNinjaVista misionNinjaVista;
     private MisionNinjaControlador misionNinjaControlador;
     private Scanner leer;
 
-    public NinjaControlador(NinjaDAO ninjaDAO, NinjaVista ninjaVista, MisionNinjaControlador misionNinjaControlador) {
+    public NinjaControlador(NinjaDAO ninjaDAO, NinjaVista ninjaVista, MisionNinjaControlador misionNinjaControlador, MisionNinjaDAO misionNinjaDAO, MisionNinjaVista misionNinjaVista) {
         this.ninjaDAO = ninjaDAO;
         this.ninjaVista = ninjaVista;
+        this.misionNinjaDAO = misionNinjaDAO;
+        this.misionNinjaVista = misionNinjaVista;
         this.misionNinjaControlador = misionNinjaControlador;
         this.leer = new Scanner(System.in);
     }
@@ -39,7 +46,8 @@ public class NinjaControlador {
             System.out.println("4. Ver misiones Completadas de Ninja");
             System.out.println("5. Asignar Mision a Ninja");
             System.out.println("6. Finalizar Mision");
-            System.out.println("7. Salir");
+            System.out.println("7. Mostrar Misiones Completadas");
+            System.out.println("8. Salir");
             System.out.println(":");
             int opcion = leer.nextInt();
             switch (opcion) {
@@ -77,32 +85,16 @@ public class NinjaControlador {
                         break;
                         
                     case 7:
+                        List<MisionNinja> listaMisiones = misionNinjaDAO.obtenerMsionesCompletas();
+                        misionNinjaVista.imprimirMisiones(listaMisiones, "misiones_Completadas.txt");
+                        
+                    case 8:
                         System.out.println("Saliendo...");
                     regresar = false;
                     break;
                         
                         
-                   /* System.out.println("ingresar Datos de usuario a actualizar");
-                    System.out.println("Ingrese ID a actualizar ");
-                    int idAct = leer.nextInt();
-                    leer.nextLine();
-                        System.out.println("ingrese el Nombre del Ninja");
-                    String nombre = leer.nextLine();
-                    System.out.println("Rango ");
-                    int rangoAct = leer.nextInt();
-                    leer.nextLine();
-                    System.out.println("Ingrese Aldea ");
-                    String aldeaAct = leer.nextLine();
-                    
-                    ninjaDAO.actualizarNinja(idAct, nombre, rangoAct, aldeaAct);
-
-                    listaNinjas = ninjaDAO.obtenerNinjas();
-                    System.out.println("##################");
-
-                    for (String ninja : listaNinjas) {
-                        System.out.println(ninja);
-                    }
-                    break;*/
+                   
 
             }
         }

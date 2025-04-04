@@ -72,4 +72,12 @@ public class MisionNinjaControlador {
         
         
     }
+    
+    public void mostrarMisiones(List<MisionNinja> misionNinja){
+        System.out.println("Lista de Misiones:");
+        for (MisionNinja MN:misionNinja){
+            System.out.println(MN);
+        }
+    }
+
 }

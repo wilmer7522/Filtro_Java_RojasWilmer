@@ -9,7 +9,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -138,7 +137,7 @@ public class MisionNinjaDAO {
     //finalizar Mision ninja
     
     public void finMision(int id){
-        String sql = "update misionNija set fechaFin = curdate() where id=?";
+        String sql = "update misionNinja set fechaFin = curdate() where id=?";
         
         try(Connection conexionInterna = conectar();
                 PreparedStatement solicitud = conexionInterna.prepareStatement(sql)){
@@ -156,5 +155,38 @@ public class MisionNinjaDAO {
             e.printStackTrace();
         }
     }
+    
+    
+    //misiones completadas 
+    public List<MisionNinja> obtenerMsionesCompletas() {
+        String sql = "SELECT mn.fechaInicio, mn.fechaFin, n.nombre AS ninja, m.descipcion AS mision  FROM misionNinja mn JOIN ninja n ON mn.ninja_id = n.id JOIN mision m ON mn.mision_id = m.id where mn.fechaFin is not null;";
+        List<MisionNinja> listaMisiones = new ArrayList<>();
+        try (
+                Connection conexionInterna = conectar(); 
+                PreparedStatement solicitud = conexionInterna.prepareStatement(sql);
+                ResultSet resultado = solicitud.executeQuery();) {
+            while (resultado.next()) {
+                String nombreNinja = resultado.getString("ninja");
+                String descripcionMision = resultado.getString("mision");
+                
+                
+                
+                
+                listaMisiones.add(new MisionNinja(
+                        
+                        resultado.getDate("fechaInicio").toLocalDate(),
+                        resultado.getDate("fechaFin").toLocalDate(),
+                        nombreNinja,
+                        descripcionMision));
+                       // resultado.getString("ninja"),
+                //resultado.getString("mision")));
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+    }
+        return listaMisiones;
+    
+    }
+
     
 }

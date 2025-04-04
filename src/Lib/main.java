@@ -23,10 +23,11 @@ public class main {
     NinjaVista ninjaVista = new NinjaVista();
     MisionNinjaDAO misionNinjaDAO = new MisionNinjaDAO();
     MisionNinjaVista misionNinjaVista = new MisionNinjaVista();
+    
     MisionNinjaControlador misionNinjaControlador = new MisionNinjaControlador(misionNinjaDAO, misionNinjaVista);
     
     
-   NinjaControlador ninjaControlador = new NinjaControlador(ninjaDAO, ninjaVista, misionNinjaControlador);
+   NinjaControlador ninjaControlador = new NinjaControlador(ninjaDAO, ninjaVista, misionNinjaControlador, misionNinjaDAO, misionNinjaVista);
     
     ninjaControlador.iniciar();
         
